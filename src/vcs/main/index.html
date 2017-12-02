@@ -15,8 +15,6 @@
         <img src="../../resources/EzSpa.png" alt="EzSpa" width="100">
     </center>
 
-    <p>This is I believe an easy framework For Electron to build either SPA pages or you can develope in modular mode, I have developed it as a hobby project in my spare time.</p>
-
     <p>This framework allow you to split and organize your HTMLs and codes for easy developement and organization</p>
 
     <p>Some of the features are:</p>
@@ -30,12 +28,17 @@
     <p>This boilerplate show you the basic functionalities of the framework, click the buttons bellow to navigate to the demo app</p>
     <center>
         <input type="button" value="All Users" onclick="mainToAllUsers()">
-        <input type="button" value="Add a User" onclick="mainToAddUser()">
+        <input type="button" value="Add a User" id="mainToAddUser">
     </center>
     <center>
-        <input type="button" value="New Window from Routes" id="openNewWinBtn">
-        <input type="button" value="New Window from code" onclick="openNewWin()">  
-    </center>  
+        <input type="button" value="New Window from Routes &quot;Open As a model&quot;" id="openNewWinBtn">
+    </center>
+    <center>
+        <input type="button" value="New Window from code &quot;Both windows accessible&quot;" onclick="openNewWin()">  
+    </center>
+    <center>
+        <input type="button" value="New Window from code &quot;The current window will be closed&quot;" onclick="openNewWinC()">  
+    </center>
 </div><script src="../../libs/example_lib.js"></script>
             <script src="JS/main_app.js"></script>
         <!-- Footer -->

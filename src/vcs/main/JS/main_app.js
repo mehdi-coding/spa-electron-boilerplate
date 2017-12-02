@@ -7,10 +7,10 @@ function mainToAllUsers() {
 
 function openNewWinC() {
     // Open a window and close current
-    ezspa_router.newWin({ source : 'newWin', closeCurrent : true})
+    ezspa_router.newWin({ window : 'newWin', closeCurrent : true})
 }
 
 function openNewWin() {
     // Open a window and let both accessible
-    ezspa_router.newWin({ source : 'newWin'})
+    ezspa_router.newWin({ window : 'newWin'})
 }

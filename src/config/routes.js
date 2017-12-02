@@ -21,11 +21,17 @@ let routes =
     {
         id      : "openNewWinBtn",
         win     : {
-                    source      : "newWin",
+                    window      : "newWin",
                     width       : 1000,
                     height      : 500,
                     closeCurrent: false,
                     modal       : true
+                }
+    },
+    {
+        id      : "openModule",
+        win     : {
+                    module      : "main",
                 }
     }
 ]

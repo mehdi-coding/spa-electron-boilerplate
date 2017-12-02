@@ -40,7 +40,7 @@ function createWindow(src) {
 app.on('ready', ezspaInit)
 
 function ezspaInit() {
-  
+
   // Load the window according to the Application settings
   if (appData.spa) {
     if (appData.dev) {
@@ -63,7 +63,7 @@ exports.newWindow = (windowObj) => {
     let winConf = {}
     winConf.width = windowObj.width ? windowObj.width : 800;
     winConf.height = windowObj.height ? windowObj.height : 600;
-    
+
     if (windowObj.modal) {
       winConf.parent = windowObj.parent;
       winConf.modal = true
@@ -71,11 +71,17 @@ exports.newWindow = (windowObj) => {
 
     let win = new BrowserWindow(winConf)
 
-    let dist ='';
+    let dist = '';
     if (appData.dev) {
-      dist = `./src/windows/${windowObj.source}/build.html`;
+      if (windowObj.window)
+        dist = `./src/windows/${windowObj.window}/build.html`;
+      else if (windowObj.module)
+        dist = `./src/vcs/${windowObj.module}/build.html`;
     } else {
-      dist = `./src/windows/${windowObj.source}/index.html`;
+      if (windowObj.window)
+        dist = `./src/windows/${windowObj.window}/index.html`;
+      else if (windowObj.module)
+        dist = `./src/vcs/${windowObj.module}/index.html`;
     }
     win.loadURL(url.format({
       pathname: path.join(__dirname, dist),
@@ -83,14 +89,14 @@ exports.newWindow = (windowObj) => {
       slashes: true,
       show: false
     }))
-  
+
     win.once('ready-to-show', () => {
       win.show()
     })
-  
+
     // Open the DevTools.
     if (appData.dev) win.webContents.openDevTools()
-    
+
   } catch (error) {
     console.log(error);
   }
