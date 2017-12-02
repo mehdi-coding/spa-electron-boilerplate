@@ -1,15 +1,16 @@
 // Routing inside a function using ezspa_router
 
-function mainToAddUser() {
-    // Route to addUser
-    ezspa_router.relocate('addUser')
-}
-
 function mainToAllUsers() {
     // Route to allUsers
     ezspa_router.relocate('allUsers')
 }
 
+function openNewWinC() {
+    // Open a window and close current
+    ezspa_router.newWin({ source : 'newWin', closeCurrent : true})
+}
+
 function openNewWin() {
-    console.log('Good Working ...');
+    // Open a window and let both accessible
+    ezspa_router.newWin({ source : 'newWin'})
 }

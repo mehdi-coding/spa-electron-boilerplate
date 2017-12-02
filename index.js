@@ -57,20 +57,43 @@ function ezspaInit() {
   }
 }
 
-// Windows Management
-exports.newWindow = (windowName) => {
-  let win = new BrowserWindow({ width: 800, height: 600})
-  let dist ='';
-  if (appData.dev) {
-    dist = `./src/windows/${windowName}/build.html`;
-  } else {
-    dist = `./src/windows/${windowName}/index.html`;
+// Router Windows Management
+exports.newWindow = (windowObj) => {
+  try {
+    let winConf = {}
+    winConf.width = windowObj.width ? windowObj.width : 800;
+    winConf.height = windowObj.height ? windowObj.height : 600;
+    
+    if (windowObj.modal) {
+      winConf.parent = windowObj.parent;
+      winConf.modal = true
+    }
+
+    let win = new BrowserWindow(winConf)
+
+    let dist ='';
+    if (appData.dev) {
+      dist = `./src/windows/${windowObj.source}/build.html`;
+    } else {
+      dist = `./src/windows/${windowObj.source}/index.html`;
+    }
+    win.loadURL(url.format({
+      pathname: path.join(__dirname, dist),
+      protocol: 'file:',
+      slashes: true,
+      show: false
+    }))
+  
+    win.once('ready-to-show', () => {
+      win.show()
+    })
+  
+    // Open the DevTools.
+    if (appData.dev) win.webContents.openDevTools()
+    
+  } catch (error) {
+    console.log(error);
   }
-  win.loadURL(url.format({
-    pathname: path.join(__dirname, dist),
-    protocol: 'file:',
-    slashes: true
-  }))
 }
 
 // Quit when all windows are closed.

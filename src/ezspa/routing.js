@@ -1,5 +1,7 @@
 // Routing file
-var path = require('path');
+const path = require('path');
+const remote = require('electron').remote;
+const main = remote.require('./index.js')
 var appData = require('../../config/appData.js')
 let routings = require('../../config/routes.js')
 
@@ -21,20 +23,20 @@ $$(document).ready(() => {
             if (rt.id) {
                 if (Array.isArray(rt.id)) {
                     rt.id.forEach(id => {
-                        addRouteClick($$('#' + id), rt.module, rt.init)
+                        addRouteClick($$('#' + id), rt.module, rt.win, rt.init)
                     })
                 } else {
-                    addRouteClick($$('#' + rt.id), rt.module, rt.init)
+                    addRouteClick($$('#' + rt.id), rt.module, rt.win, rt.init)
                 }
             }
 
             if (rt.class) {
                 if (Array.isArray(rt.class)) {
                     rt.class.forEach(cla => {
-                        addRouteClick($$('.' + cla), rt.module, rt.init)
+                        addRouteClick($$('.' + cla), rt.module, rt.win, rt.init)
                     })
                 } else {
-                    addRouteClick($$('.' + rt.class), rt.module, rt.init)
+                    addRouteClick($$('.' + rt.class), rt.module, rt.win, rt.init)
                 }
             }
         });
@@ -43,13 +45,15 @@ $$(document).ready(() => {
     }
 })
 
-function addRouteClick(element, module, init) {
+function addRouteClick(element, module, win, init) {
     element.on("click", function (event) {
         event.preventDefault();
         if (init && appData.spa) {
             init();
         };
-        ezspa_router.relocate(module);
+
+        if (module) ezspa_router.relocate(module);
+        if (win) ezspa_router.newWin(win);
     })
 }
 
@@ -76,5 +80,24 @@ ezspa_router.relocate = (location) => {
         }
     } catch (error) {
         console.log(error);
+    }
+}
+
+ezspa_router.newWin = (win) => {
+    try {
+        win.parent = remote.getCurrentWindow();
+        main.newWindow(win);
+        if (win.closeCurrent && !win.modal) win.parent.close();
+    } catch (error) {
+        console.log('error');
+    }
+}
+
+ezspa_router.closeThis = () => {
+    try {
+        let win = remote.getCurrentWindow();
+        win.close();
+    } catch (error) {
+        console.log('error');
     }
 }

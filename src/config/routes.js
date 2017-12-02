@@ -9,17 +9,24 @@ let routes =
         id      : "allUsersRoute",
         class   : "allUsersRouteClass",
         module  : "allUsers",
+        win     : "newWin",
         init    : typeof updateTable === "function" ? updateTable : null
     },
     {
-        id      : "addUserRoute",
+        id      : ["addUserRoute", "mainToAddUser"],
         class   : "addUserRouteClass",
         module  : "addUser",
         init    : typeof addInit === "function" ? addInit : null
     },
     {
         id      : "openNewWinBtn",
-        win     : "newWin"
+        win     : {
+                    source      : "newWin",
+                    width       : 1000,
+                    height      : 500,
+                    closeCurrent: false,
+                    modal       : true
+                }
     }
 ]
 
