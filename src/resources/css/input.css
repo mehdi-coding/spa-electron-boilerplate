@@ -1,0 +1,17 @@
+input[type=text], input[type=email]{
+    width: 250px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 20px;
+    padding: 06px 20px 06px 06px;
+}
+
+label {
+    font-size: 20px;
+    color: grey;
+}
+
+form{
+    padding: 20px;
+}

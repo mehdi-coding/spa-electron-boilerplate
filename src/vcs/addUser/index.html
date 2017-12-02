@@ -1,0 +1,58 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Electron EzSpa Boilerplate</title>
+
+  <link rel="stylesheet" href="../../resources/css/main.css">
+
+<!-- if You want to use jQuery Insert this line above script imports  -->
+<script>if (typeof module === 'object') { window.module = module; module = undefined; }</script><link href="../../resources/css/input.css" rel="stylesheet">
+            </head>
+<body><!-- Side Bar -->
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+  <a href="#" class="mainRouteClass" onclick="closeNav()">Main</a>
+  <a href="#" class="allUsersRouteClass" onclick="closeNav()">All Users</a>
+  <a href="#" class="addUserRouteClass" onclick="closeNav()">Add User</a>
+</div><!-- Header Bar -->
+<div class="topnav" id="myTopnav">
+    <a>
+        <span style="font-size:15px;cursor:pointer" onclick="openNav()">
+            ☰ open
+        </span>
+    </a>
+    <a href="#" id="mainRoute">Main</a>
+    <a href="#" id="allUsersRoute">All Users</a>
+    <a href="#" id="addUserRoute">Add User</a>
+</div><div class="container">
+	<h1>Add a User</h1>
+	<form>
+		
+            <div>
+                <label><b> Name: </b></label>
+                <input type="text" id="name" placeholder="Name" onkeyup="upIt()" class="ezinput">
+            </div>
+            
+		
+            <div>
+                <label><b> Email: </b></label>
+                <input type="email" id="email" placeholder="Email">
+            </div>
+            
+		<input type="button" value="Add" id="addBtn" onclick="addUser()">
+	</form>
+	<p>No Input validation is implemented, this is only for demo ...</p>
+</div><script src="../../resources/js/input.js"></script>
+            <script src="JS/addUser_app.js"></script>
+        <script src="JS/addUser_init.js"></script>
+        <!-- Footer -->
+<div class="footer">
+    <p>
+        <a href="https://github.com/mehdi-coding/ezspa-electron">EzSpa</a> Footer, "The CSS is somehow modified from <a href="https://www.w3schools.com">https://www.w3schools.com</a>"
+        
+    </p>
+</div>
+
+<!-- Scripts Imports For all VCs -->
+<script src="../../resources/js/sideBar.js"></script><script src="../../ezspa/routing.js"></script></body></html>

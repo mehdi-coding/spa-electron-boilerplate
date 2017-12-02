@@ -1,0 +1,108 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Electron EzSpa Boilerplate</title>
+
+  <link rel="stylesheet" href="../../resources/css/main.css">
+
+<!-- if You want to use jQuery Insert this line above script imports  -->
+<script>if (typeof module === 'object') { window.module = module; module = undefined; }</script><link href="../../resources/datatable/datatables.css" rel="stylesheet">
+            <link href="../../resources/css/input.css" rel="stylesheet">
+            </head>
+<body><ezspapage id="ezspapage_main"><div class="container">
+
+    <center>
+        <h1>Welcome to SPA-Electron</h1>
+        <img src="../../resources/EzSpa.png" alt="EzSpa" width="100">
+    </center>
+
+    <p>This is I believe an easy framework For Electron to build either SPA pages or you can develope in modular mode, I have developed it as a hobby project in my spare time.</p>
+
+    <p>This framework allow you to split and organize your HTMLs and codes for easy developement and organization</p>
+
+    <p>Some of the features are:</p>
+    <ol>
+        <li>MVC like structure inspired from codeigniter</li>
+        <li>You can build your app as an SPA (Single Page App) or Modular (VCs "Views &amp; Controllers")</li>
+        <li>Easy routing between the views</li>
+        <li>Using ES6 for custom element definition with automatic imports for css and JS</li>
+    </ol>
+
+    <p>This boilerplate show you the basic functionalities of the framework, click the buttons bellow to navigate to the demo app</p>
+    <center>
+        <input type="button" value="All Users" onclick="mainToAllUsers()">
+        <input type="button" value="Add a User" onclick="mainToAddUser()">
+    </center>
+    <center>
+        <input type="button" value="New Window from Routes" id="openNewWinBtn">
+        <input type="button" value="New Window from code" onclick="openNewWin()">  
+    </center>  
+</div></ezspapage><ezspanav style="display: none;"><!-- Side Bar -->
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+  <a href="#" class="mainRouteClass" onclick="closeNav()">Main</a>
+  <a href="#" class="allUsersRouteClass" onclick="closeNav()">All Users</a>
+  <a href="#" class="addUserRouteClass" onclick="closeNav()">Add User</a>
+</div><!-- Header Bar -->
+<div class="topnav" id="myTopnav">
+    <a>
+        <span style="font-size:15px;cursor:pointer" onclick="openNav()">
+            ☰ open
+        </span>
+    </a>
+    <a href="#" id="mainRoute">Main</a>
+    <a href="#" id="allUsersRoute">All Users</a>
+    <a href="#" id="addUserRoute">Add User</a>
+</div></ezspanav><ezspapage id="ezspapage_addUser" style="display: none;"><div class="container">
+	<h1>Add a User</h1>
+	<form>
+		
+            <div>
+                <label><b> Name: </b></label>
+                <input type="text" id="name" placeholder="Name" onkeyup="upIt()" class="ezinput">
+            </div>
+            
+		
+            <div>
+                <label><b> Email: </b></label>
+                <input type="email" id="email" placeholder="Email">
+            </div>
+            
+		<input type="button" value="Add" id="addBtn" onclick="addUser()">
+	</form>
+	<p>No Input validation is implemented, this is only for demo ...</p>
+</div></ezspapage><ezspapage id="ezspapage_allUsers" style="display: none;"><div class="container">
+	
+	<h1>All User</h1>
+    <h5>Datatable from: <a href="https://datatables.net/">https://datatables.net/</a></h5>
+	<table id="allUsersTable" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>email</th>
+            </tr>
+        </thead>
+        <tbody>
+
+		</tbody>
+	</table>
+    <em>JSON data in test_db.json were generated from <a href="http://www.mockaroo.com/">http://www.mockaroo.com/</a> </em>
+</div></ezspapage><script src="../../resources/js/jquery.min.js"></script>
+            <script src="../../resources/datatable/datatables.min.js"></script>
+            <script src="../../resources/js/input.js"></script>
+            <script src="../../libs/example_lib.js"></script>
+            <script src="../../vcs/main/JS/main_app.js"></script>
+        <script src="../../vcs/addUser/JS/addUser_app.js"></script>
+        <script src="../../vcs/addUser/JS/addUser_init.js"></script>
+        <script src="../../vcs/allUsers/JS/allUsers_app.js"></script>
+        <!-- Footer -->
+<div class="footer">
+    <p>
+        <a href="https://github.com/mehdi-coding/ezspa-electron">EzSpa</a> Footer, "The CSS is somehow modified from <a href="https://www.w3schools.com">https://www.w3schools.com</a>"
+        
+    </p>
+</div>
+
+<!-- Scripts Imports For all VCs -->
+<script src="../../resources/js/sideBar.js"></script><script src="../../ezspa/routing.js"></script></body></html>
