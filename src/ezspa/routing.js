@@ -71,8 +71,8 @@ ezspa_router.relocate = (location) => {
         else {
             let pth;
 
-            if (appData.dev) pth = '../' + location + '/build.html';
-            else pth = '../' + location + '/index.html';
+            if (appData.dev) pth = '../../vcs/' + location + '/build.html';
+            else pth = '../../vcs/' + location + '/index.html';
 
             pth = path.join(__dirname, pth);
 
