@@ -32,6 +32,10 @@ let routes =
         id      : "openModule",
         win     : {
                     module      : "main",
+                    width       : 1000,
+                    height      : 500,
+                    closeCurrent: false,
+                    modal       : true
                 }
     }
 ]
